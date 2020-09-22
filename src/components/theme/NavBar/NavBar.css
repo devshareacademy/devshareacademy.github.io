@@ -1,0 +1,46 @@
+.nav-title {
+  margin: auto !important;
+  margin-left: 10px !important;
+}
+.nav a {
+  text-decoration: none;
+  color: black;
+  box-shadow: none;
+}
+.navLogo {
+  margin-left: 10px;
+}
+.NavBarLink {
+  text-decoration: none;
+  color: #111;
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 1vw;
+  transition: all 200ms ease-in;
+  position: relative;
+}
+.NavBarLink:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 0%;
+  content: ".";
+  color: transparent;
+  background: goldenrod;
+  height: 1px;
+  transition: all 0.4s ease-in;
+}
+.NavBarLink:hover {
+  color: goldenrod;
+}
+.NavBarLink:hover::after {
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .NavBarLink {
+    padding: 20px 0;
+    font-size: 1.5rem;
+    z-index: 6;
+  }
+}

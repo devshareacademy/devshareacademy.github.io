@@ -1,0 +1,9 @@
+body {
+  padding-bottom: 50px;
+}
+.nes-progress {
+  height: 25px;
+}
+h2, h3, h4 {
+  font-family: "Press Start 2P";
+}
