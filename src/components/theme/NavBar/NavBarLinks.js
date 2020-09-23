@@ -8,6 +8,7 @@ const NavbarLinks = () => {
   return (
     <>
       <NavItem to="/" className="NavBarLink">Blog</NavItem>
+      <NavItem to="/" className="NavBarLink">Courses</NavItem>
       <NavItem to="/404" className="NavBarLink">Contact</NavItem>
     </>
   )

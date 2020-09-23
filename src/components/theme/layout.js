@@ -7,7 +7,7 @@ import Footer from "./Footer/Footer"
 
 class Layout extends React.Component {
   render() {
-    const { location } = this.props
+    const { location, children } = this.props
 
     return (
       <div className="page-container">
@@ -15,11 +15,9 @@ class Layout extends React.Component {
           title={location}
           keywords={[`blog`, `gatsby`, `javascript`, `react`, `devshareacademy`]}
         />
-        <NavBar />
         <div className="content-wrap">
-          <p> some text </p>
-          <h2> some more</h2>
-
+          <NavBar />
+          <main className="page-content">{children}</main>
         </div>
         <Footer />
       </div>
