@@ -43,4 +43,12 @@
     font-size: 1.5rem;
     z-index: 6;
   }
+  .nav-title {
+    font-size: 12px;
+  }
+}
+@media (max-width: 410px) {
+  .nav-title {
+    font-size: 8px;
+  }
 }

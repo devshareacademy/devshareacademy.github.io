@@ -1,9 +1,29 @@
 body {
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 .nes-progress {
   height: 25px;
 }
 h2, h3, h4 {
   font-family: "Press Start 2P";
+}
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+.content-wrap {
+  padding-bottom: 3.5rem;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3.5rem;
+  margin: 0%;
+  text-align: center;
+  margin: 24px;
+}
+.icon-list a {
+  box-shadow: none;
+  margin: 2px;
 }
