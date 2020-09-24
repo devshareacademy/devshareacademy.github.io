@@ -17,7 +17,7 @@ class Layout extends React.Component {
         />
         <div className="content-wrap">
           <NavBar />
-          <main className="page-content">{children}</main>
+          <main className="page-content container">{children}</main>
         </div>
         <Footer />
       </div>

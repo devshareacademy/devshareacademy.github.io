@@ -15,7 +15,8 @@ h2, h3, h4 {
   padding-bottom: 4.5rem;
 }
 .page-content {
-  margin: 20px;
+  margin: auto;
+  margin-top: 25px;
 }
 .footer {
   position: absolute;
@@ -35,4 +36,13 @@ h2, h3, h4 {
 }
 .centered {
   text-align: center;
+}
+.course-image {
+  width: 100%;
+}
+.course-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 }
