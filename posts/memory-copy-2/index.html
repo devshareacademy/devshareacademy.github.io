@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Creating A Memory Game Class in TypeScript 2 | Dev Share Acacdemy</title>
+  <link rel = 'canonical' href = 'http://example.org/posts/memory-copy-2/'>
+  <meta name="description" content="A developers go to site for tutorials, courses, and blog articles on different resources.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Creating A Memory Game Class in TypeScript 2" />
+<meta property="og:description" content="Intro The purpose of this tutorial is to show you how to create a simple Memory Game class in TypeScript that will contain all of the core game logic for building a simple Memory Game. For this tutorial, we will be testing our game logic using the browser developer console. However, in future tutorials, I will be showing you how we can take this class and create a basic Memory Game using HTML5 game frameworks like Phaserand Kontra." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/memory-copy-2/" />
+<meta property="article:published_time" content="2020-07-15T00:00:01+00:00" />
+<meta property="article:modified_time" content="2020-07-15T00:00:01+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Creating A Memory Game Class in TypeScript 2"/>
+<meta name="twitter:description" content="Intro The purpose of this tutorial is to show you how to create a simple Memory Game class in TypeScript that will contain all of the core game logic for building a simple Memory Game. For this tutorial, we will be testing our game logic using the browser developer console. However, in future tutorials, I will be showing you how we can take this class and create a basic Memory Game using HTML5 game frameworks like Phaserand Kontra."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/style-light.css">
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="/images/favicon.ico" />
+
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/posts">All posts</a></li>
+        
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&text=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&title=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&is_video=false&description=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202&body=Check out this article: http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&title=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&title=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&title=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-stumbleupon " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&title=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-digg " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&name=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202&description=Intro%20The%20purpose%20of%20this%20tutorial%20is%20to%20show%20you%20how%20to%20create%20a%20simple%20Memory%20Game%20class%20in%20TypeScript%20that%20will%20contain%20all%20of%20the%20core%20game%20logic%20for%20building%20a%20simple%20Memory%20Game.%20For%20this%20tutorial%2c%20we%20will%20be%20testing%20our%20game%20logic%20using%20the%20browser%20developer%20console.%20However%2c%20in%20future%20tutorials%2c%20I%20will%20be%20showing%20you%20how%20we%20can%20take%20this%20class%20and%20create%20a%20basic%20Memory%20Game%20using%20HTML5%20game%20frameworks%20like%20Phaserand%20Kontra.">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&t=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#memory-game-also-known-as-concentration">Memory Game also known as Concentration</a></li>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#card-class">Card Class</a></li>
+        <li><a href="#game-class">Game Class</a></li>
+        <li><a href="#flipping-all-cards-facedown">Flipping All Cards Facedown</a></li>
+        <li><a href="#shuffling-cards">Shuffling Cards</a></li>
+        <li><a href="#selecting-a-card">Selecting A Card</a></li>
+        <li><a href="#testing-our-code">Testing Our Code</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Creating A Memory Game Class in TypeScript 2
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2020-07-15 00:00:01 &#43;0000 UTC" itemprop="datePublished">2020-07-15</time>
+          
+        </div>
+        
+        <div class="article-category">
+            <i class="fas fa-archive"></i>
+            
+            
+            <a class="category-link" href="/categories/typescript">TypeScript</a>
+            
+            
+            <a class="category-link" href="/categories/tutorial">Tutorial</a>
+            
+             ,  
+            <a class="category-link" href="/categories/game-development">Game Development</a>
+            
+             ,  
+            <a class="category-link" href="/categories/memory-game">Memory Game</a>
+            
+        </div>
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/typescript" rel="tag">TypeScript</a>
+            
+            
+            <a class="tag-link" href="/tags/tutorial" rel="tag">Tutorial</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/game-development" rel="tag">Game Development</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/memory-game" rel="tag">Memory Game</a>
+            
+        </div> 
+        
+      </div>
+    </header>
+
+  
+    <div class="content" itemprop="articleBody">
+      <h3 id="intro">Intro</h3>
+<p>The purpose of this tutorial is to show you how to create a simple Memory Game class in TypeScript that will contain all of the core game logic for building a simple Memory Game. For this tutorial, we will be testing our game logic using the browser developer console. However, in future tutorials, I will be showing you how we can take this class and create a basic Memory Game using HTML5 game frameworks like <!-- raw HTML omitted -->Phaser<!-- raw HTML omitted --> and <!-- raw HTML omitted -->Kontra<!-- raw HTML omitted -->.</p>
+<p>In a lot of tutorials that show you how to build a game in a particular framework, generally the core game logic becomes tightly coupled to that particular framework. When this happens, it can make it very difficult to re-use your code in other games, and to rebuild the game in another framework. By separating out the core logic for the game and the logic that is used for presenting the game, re-using our code with another framework becomes much simpler.</p>
+<p>You can find the complete code for this tutorial here: <!-- raw HTML omitted -->GitHub - TypeScript Basic Memory Game<!-- raw HTML omitted -->.</p>
+<h3 id="memory-game-also-known-as-concentration">Memory Game also known as Concentration</h3>
+<p>If you are not familiar, Concentration (also known as Memory), is a type of card game in which all of the cards are laid face down and the player flips two cards over at a time, which is called a turn in this game. If the two cards are a match, then the two cards stay face up and the player can flip over the next cards. If the two cards do not match, then the player flips both of those cards face down and takes another turn flipping over any two cards. This continues until the player has found all of the matches.</p>
+<p>For this type of game, usually we could time the player to see how long it takes them to find the matches, or keep track of the number of turns it takes them to complete the game and from there we could treat the lowest score as the best score and have the player to try and beat that number. In some variations of the game, to make the game a little easier, the player may be shown the cards before they are flipped down.</p>
+<h3 id="requirements">Requirements</h3>
+<p>In order to follow along with this tutorial, you will need to have Nodejs and NPM installed on your computer, or have access to a computing resource that does. For this tutorial, I will be using <!-- raw HTML omitted -->Yarn<!-- raw HTML omitted --> for my package manager, however you can following along by running the same commands with <code>npm</code>.</p>
+<p>You will also need to have <!-- raw HTML omitted -->Parcel<!-- raw HTML omitted --> installed globally. You can do this by running one of the following commands:</p>
+<p>Yarn:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn global add parcel-bundler
+</code></pre></div><p>npm:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install -g parcel-bundler
+</code></pre></div><p>Having experience with TypeScript and JavaScript would also be beneficial, since I will not be covering the basics of these languages in this tutorial.</p>
+<h3 id="setup">Setup</h3>
+<p>To make getting started as simple as possible, I have created a basic TypeScript template that uses <!-- raw HTML omitted -->Parcel<!-- raw HTML omitted --> for bundling our web application and for serving our web application while working locally. You will need to either clone or download the code from the following repository: <!-- raw HTML omitted -->TypeScript Parcel Template<!-- raw HTML omitted -->.</p>
+<p>Once you have the source code, you will need to install the dependencies for the project by running the following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn install --frozen-lockfile
+</code></pre></div><p>Once all of the dependencies are installed, you should be able to run <code>yarn start</code> to start the web server on port <code>8080</code> and you should be able to navigate to <code>http://localhost:8080</code> in your web browser and see the following page:</p>
+<p><img src="/img/Creating-A-Memory-Game-In-JavaScript/Creating-A-Memory-Game-In-JavaScript1.png" alt="Template"></p>
+<p>With our project now set up, we can start building our game!</p>
+<h3 id="card-class">Card Class</h3>
+<p>This first thing we are going to do is build out a <code>Card</code> class that will represent the cards we are trying to model in our game. For each card in our game we will need to know the following things:</p>
+<ul>
+<li>is the card visible to the player</li>
+<li>what is the type of the card</li>
+</ul>
+<p>For interacting with our cards, we will need to be able to do the following actions:</p>
+<ul>
+<li>flip a card over so it is visible</li>
+<li>flip a card over so it is not visible</li>
+<li>check to see if a card is visible</li>
+<li>check the card&rsquo;s type</li>
+</ul>
+<p>With this information we can start to build out our class. Create a new folder called <code>app</code> in the <code>src</code> folder, and in this folder create a new file called <code>Card.ts</code>. Place the following code in the new file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Card</span> {
+  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span>;
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">visible</span>: <span style="color:#66d9ef">boolean</span>;
+
+  <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">cardType</span>: <span style="color:#66d9ef">string</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#66d9ef">type</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cardType</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">visible</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+  }
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">getType</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#66d9ef">type</span>;
+  }
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">setType</span>(<span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
+    <span style="color:#66d9ef">this</span>.<span style="color:#66d9ef">type</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">type</span>;
+  }
+
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">flipCard</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">void</span>&gt; {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">visible</span> <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">visible</span>;
+  }
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">isVisible</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">boolean</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">visible</span>;
+  }
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">flipCardFaceDown</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">visible</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+  }
+}
+</code></pre></div><h3 id="game-class">Game Class</h3>
+<p>With our <code>Card</code> class in place, we can start building out our <code>MemoryGame</code> class. This class is going to contain all of the core logic for our game. For our game we will need to know the following:</p>
+<ul>
+<li>the cards that are used for this game</li>
+<li>the current number of turns</li>
+<li>which card is selected</li>
+<li>is the game locked and the player cannot select any cards (used for any animations we want to have in the game or for when we want to reset the game state)</li>
+</ul>
+<p>In our game, we will need to be able to do the following:</p>
+<ul>
+<li>flip all of the cards facedown</li>
+<li>get the current number of turns made</li>
+<li>increment the number of turns</li>
+<li>shuffle all of the cards</li>
+<li>get all of the cards in our game (used for presenting them in the game)</li>
+<li>allowing the player to select multiple cards</li>
+<li>logic to check for card matches</li>
+</ul>
+<p>With this, we can start to build out our <code>MemoryGame</code> class. In the <code>app</code> folder, create a new file called <code>MemoryGame.ts</code> and place the following code inside it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Card</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./Card&#39;</span>;
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MemoryGame</span> {
+  <span style="color:#66d9ef">protected</span> <span style="color:#a6e22e">cards</span>: <span style="color:#66d9ef">Card</span>[];
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">numberOfMoves</span><span style="color:#f92672">!:</span> <span style="color:#66d9ef">number</span>;
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">selectedCard</span><span style="color:#f92672">!:</span> <span style="color:#a6e22e">Card</span><span style="color:#f92672">|</span><span style="color:#66d9ef">null</span>;
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">lockGame</span><span style="color:#f92672">!:</span> <span style="color:#66d9ef">boolean</span>;
+
+  <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">cards</span>: <span style="color:#66d9ef">Card</span>[]) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cards</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cards</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">resetGame</span>();
+  }
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">resetGame</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">shuffleCards</span>();
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">numberOfMoves</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">selectedCard</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lockGame</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">flipCards</span>();
+  }
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">getCards</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Card</span>[] {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cards</span>;
+  }
+
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">selectCard</span>(<span style="color:#a6e22e">card</span>: <span style="color:#66d9ef">Card</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">void</span>&gt; {
+    <span style="color:#75715e">// TODO
+</span><span style="color:#75715e"></span>  }
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">getNumberOfMoves</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">numberOfMoves</span>;
+  }
+
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">shuffleCards</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
+    <span style="color:#75715e">// TODO
+</span><span style="color:#75715e"></span>  }
+
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">incrementTotalNumberOfMoves</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">numberOfMoves</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+  }
+
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">flipCards</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
+    <span style="color:#75715e">// TODO
+</span><span style="color:#75715e"></span>  }
+}
+</code></pre></div><p>In the code above, we created the basic skeleton of our class and we set up our constructor to take in an array of <code>Card</code> objects. From there, we had the constructor call the <code>resetGame</code> method, which will be used for setting up our game and for resetting the game if the player wants to start over or for when the game is completed. In the <code>resetGame</code> method, we shuffle the card array that is provided to our class and then we call the <code>flipCards</code> method, which will be used for flipping all of our cards facedown.</p>
+<p>We also added the following methods, which have no logic in them yet:</p>
+<ul>
+<li><code>selectCard</code>: will be called anytime a player clicks on one of the <code>Card</code> objects. This method will contain all of the logic for checking for matches and for flipping cards over.</li>
+<li><code>shuffleCards</code>: used for shuffling the <code>Card</code> objects in our <code>Card</code> array.</li>
+<li><code>flipCards</code>: used for flipping all of the cards facedown.</li>
+</ul>
+<h3 id="flipping-all-cards-facedown">Flipping All Cards Facedown</h3>
+<p>With the basic class structure in place, we we still updating the methods that still need to be completed. The first method we are going to work on is the <code>flipCards</code> method. For this method, we basically need to loop through all of our cards and call the <code>flipCardFaceDown</code> method.</p>
+<p>Replace the <code>// TODO</code> in the <code>flipCards</code> method with the following code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cards</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">card</span>: <span style="color:#66d9ef">Card</span>) <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#a6e22e">card</span>.<span style="color:#a6e22e">flipCardFaceDown</span>();
+});
+</code></pre></div><h3 id="shuffling-cards">Shuffling Cards</h3>
+<p>For the <code>shuffleCards</code> method, we need to take our array of cards and shuffle them randomly. To achieve this, we will implement the Fisher-Yates shuffle algorithm. If you are not familiar, the Fisher-Yates shuffle algorithm is an algorithm for generating a random permutation of a finite sequence, and this algorithm produces an unbiased permutation, where each permutation is equally likely. Basically, this would be like if we took all of the elements from our array, put them in a hat, and then pulled those elements out one by one, which would result in a new sequence.</p>
+<p>Instead of placing our shuffle logic in the <code>shuffle</code> method, we will place this logic in a new function in a seperate file In the <code>app</code> folder create a new called <code>shuffle.ts</code> and place the following code in it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * Fisher Yates shuffle
+</span><span style="color:#75715e"> * @param array an array of items that need to be shuffled.
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">shuffle</span>(<span style="color:#a6e22e">array</span>: <span style="color:#66d9ef">any</span>[]) {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currentIndex</span>: <span style="color:#66d9ef">number</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">length</span>;
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">temporaryValue</span>: <span style="color:#66d9ef">any</span>;
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">randomIndex</span>: <span style="color:#66d9ef">number</span>;
+
+  <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">currentIndex</span> <span style="color:#f92672">!==</span> <span style="color:#ae81ff">0</span>) {
+    <span style="color:#a6e22e">randomIndex</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#a6e22e">currentIndex</span>);
+    <span style="color:#a6e22e">currentIndex</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#a6e22e">temporaryValue</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>[<span style="color:#a6e22e">currentIndex</span>];
+    <span style="color:#a6e22e">array</span>[<span style="color:#a6e22e">currentIndex</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>[<span style="color:#a6e22e">randomIndex</span>];
+    <span style="color:#a6e22e">array</span>[<span style="color:#a6e22e">randomIndex</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">temporaryValue</span>;
+  }
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">array</span>;
+}
+</code></pre></div><p>Then back in the <code>MemoryGame</code> class, replace the <code>// TODO</code> in the <code>shuffleCards</code> method with the following code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cards</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">shuffle</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cards</span>);
+</code></pre></div><h3 id="selecting-a-card">Selecting A Card</h3>
+<p>Finally, for the <code>selectCard</code> method, we need to make sure that the selected card is not already visible and that the game is not currently preventing the player from selecting cards. We will need to allow the player to select a single card and keep track of the selected card, and then when the player clicks on a second card we need to see if those two cards match. If those two cards don&rsquo;t match, then we need to flip them back over.</p>
+<p>Replace the <code>// TODO</code> in the <code>selectCard</code> method with the following code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// check to see if the selected card is already face up
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">card</span>.<span style="color:#a6e22e">isVisible</span>()) {
+  <span style="color:#75715e">// check to see if game is locked (for animations and time based events)
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lockGame</span>) {
+    <span style="color:#75715e">// this is the first card selected
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">selectedCard</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) {
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">selectedCard</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">card</span>;
+      <span style="color:#75715e">// display card until a second card is chosen
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">card</span>.<span style="color:#a6e22e">flipCard</span>();
+    } <span style="color:#66d9ef">else</span> {
+      <span style="color:#75715e">// lock game until animations are complete
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lockGame</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+      <span style="color:#75715e">// display second card
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">card</span>.<span style="color:#a6e22e">flipCard</span>();
+      <span style="color:#75715e">// second card was selected, increment total number of moves
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">incrementTotalNumberOfMoves</span>();
+      <span style="color:#75715e">// check for a match, if not a match flip cards over
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">cardsMatch</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">selectedCard</span>, <span style="color:#a6e22e">card</span>)) {
+        <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">Promise</span>.<span style="color:#a6e22e">all</span>([<span style="color:#a6e22e">card</span>.<span style="color:#a6e22e">flipCard</span>(), <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">selectedCard</span>.<span style="color:#a6e22e">flipCard</span>()]);
+      }
+      <span style="color:#75715e">// reset selected card
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">selectedCard</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+      <span style="color:#75715e">// re-enable game
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lockGame</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+    }
+  }
+}
+</code></pre></div><h3 id="testing-our-code">Testing Our Code</h3>
+<p>With the code for our <code>MemoryGame</code> class in place, we can test our code. To do this, we will create an instance of our class, and make this instance available on the global window object. By doing this, we can test our code in our browser developer console.</p>
+<p>In the <code>src/Main.ts</code> file, replace all of the code in this file with the following code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Card</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./app/Card&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">MemoryGame</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./app/MemoryGame&#39;</span>;
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cards</span>: <span style="color:#66d9ef">Card</span>[] <span style="color:#f92672">=</span> [
+  <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Card</span>(<span style="color:#e6db74">&#39;1&#39;</span>),
+  <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Card</span>(<span style="color:#e6db74">&#39;1&#39;</span>),
+  <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Card</span>(<span style="color:#e6db74">&#39;2&#39;</span>),
+  <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Card</span>(<span style="color:#e6db74">&#39;2&#39;</span>),
+];
+
+(window <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">any</span>).<span style="color:#a6e22e">memoryGame</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MemoryGame</span>(<span style="color:#a6e22e">cards</span>);
+</code></pre></div><p>In the code above, we created a simple <code>Card</code> array that holds two pairs of cards, and then we created an instance of our <code>MemoryGame</code> class. If you go to <code>http://localhost:8080/</code> in your browser and open the developer console, you should be able to type in <code>memoryGame</code> and see the game instance.</p>
+<!-- raw HTML omitted -->
+<p>To test selecting a card, if you type in <code>memoryGame.selectCard(memoryGame.cards[0]);</code> followed by <code>memoryGame.cards</code>, you should see that the first card in the array has been selected. If you select another card that does not match the first card, then the cards should be updated so that no cards are selected.</p>
+<!-- raw HTML omitted -->
+<p>To test the matching of pairs, if you select the first card in the cards array followed by the other card in the array that matches, you should see that the cards remain visible.</p>
+<!-- raw HTML omitted -->
+<h3 id="conclusion">Conclusion</h3>
+<p>Now that we have tested our class, that brings this tutorial to an end. We managed to create a simple <code>MemoryGame</code> class that we can use to create a basic Memory Game. By abstracting the core logic to a seperate file, we can easily extend and re-use this class.</p>
+<p>You can find the complete code for this tutorial here: <!-- raw HTML omitted -->GitHub - TypeScript Basic Memory Game<!-- raw HTML omitted -->.</p>
+<p>I hope you enjoyed this post. Please feel free to post any questions or comments below.</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">All posts</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#memory-game-also-known-as-concentration">Memory Game also known as Concentration</a></li>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#card-class">Card Class</a></li>
+        <li><a href="#game-class">Game Class</a></li>
+        <li><a href="#flipping-all-cards-facedown">Flipping All Cards Facedown</a></li>
+        <li><a href="#shuffling-cards">Shuffling Cards</a></li>
+        <li><a href="#selecting-a-card">Selecting A Card</a></li>
+        <li><a href="#testing-our-code">Testing Our Code</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&text=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&title=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&is_video=false&description=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202&body=Check out this article: http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&title=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&title=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&title=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&title=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&name=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202&description=Intro%20The%20purpose%20of%20this%20tutorial%20is%20to%20show%20you%20how%20to%20create%20a%20simple%20Memory%20Game%20class%20in%20TypeScript%20that%20will%20contain%20all%20of%20the%20core%20game%20logic%20for%20building%20a%20simple%20Memory%20Game.%20For%20this%20tutorial%2c%20we%20will%20be%20testing%20our%20game%20logic%20using%20the%20browser%20developer%20console.%20However%2c%20in%20future%20tutorials%2c%20I%20will%20be%20showing%20you%20how%20we%20can%20take%20this%20class%20and%20create%20a%20basic%20Memory%20Game%20using%20HTML5%20game%20frameworks%20like%20Phaserand%20Kontra.">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2fexample.org%2fposts%2fmemory-copy-2%2f&t=Creating%20A%20Memory%20Game%20Class%20in%20TypeScript%202">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2020  Dev Share Acacdemy 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">All posts</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+  
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</html>
