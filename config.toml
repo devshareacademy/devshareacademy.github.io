@@ -1,0 +1,57 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Dev Share Acacdemy"
+theme = "cactus"
+
+[params]
+  colortheme = "light" # dark, light, white, or classic
+  description = "A developers go to site for tutorials, courses, and blog articles on different resources."
+  mainSection = "posts"
+  showAllPostsOnHomePage = false
+  postsOnHomePage = 5
+  tagsOverview = true
+  showProjectsList = true
+  projectsUrl = "https://github.com/monkeyWzr"
+  rss = true
+  mathjax = true
+  showCoursesList = true
+  coursesUrl = "https://github.com/monkeyWzr"
+
+[[params.social]]
+  name = "github"
+  link = "https://github.com/devshareacademy"
+
+[[params.social]]
+  name = "email"
+  link = "devshareacademy@gmail.com"
+
+[[params.social]]
+  name = "linkedin"
+  link = "https://www.linkedin.com/in/scott-westover-77393a97/"
+
+[params.comments]
+  enabled = false
+
+# Main menu which appears below site header.
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 3
+
+# [[menu.main]]
+# name = "About"
+# url = "/about"
+# weight = 4
+
+# googleAnalytics = "UA-123-45"
+# googleAnalyticsAsync = true # not required
