@@ -95,7 +95,7 @@ weight = 4
 ```
 
 * show tagsoverview (defalut) or not
-* 
+*
 ```toml
 [params]
   tagsOverview = true
@@ -127,7 +127,7 @@ for example, `data/projects.json`:
       },
       {
          "name":"Font Awesome",
-         "url":"http://fontawesome.io/",
+         "url":"https://fontawesome.io/",
          "desc":"The iconic font and CSS toolkit"
       }
    ]
@@ -255,7 +255,7 @@ The site config will be ignored when `mathjax` option exists in front matter.
 - [ ] toc template
 - [ ] Customizable copyright year
 - [ ] gallery
-- [ ] expose [mathjax configuration](https://docs.mathjax.org/en/latest/web/configuration.html#web-configuration) 
+- [ ] expose [mathjax configuration](https://docs.mathjax.org/en/latest/web/configuration.html#web-configuration)
 
 ## License
 
