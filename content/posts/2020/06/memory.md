@@ -1,19 +1,20 @@
 ---
-title: Creating A Memory Game Class in TypeScript 2
-date: 2020-07-15 00:00:01
-tags:
-  - "TypeScript"
-  - "Tutorial"
-  - "Game Development"
-  - "Memory Game"
-
-categories:
-  - "TypeScript"
-  - "Tutorial"
-  - "Game Development"
-  - "Memory Game"
-
+title: Creating A Memory Game Class in TypeScript
+date: 2020-06-15 00:00:01
+tags: [
+  "TypeScript",
+  "Tutorial",
+  "Game Development",
+  "Memory Game"
+]
+categories: [
+  "TypeScript",
+  "Tutorial",
+  "Game Development",
+  "Memory Game"
+]
 desc: Learn how to build a simple Memory Game Class in TypeScript that you can re-use to build a Memory Game in any JavaScript framework.
+draft: false
 ---
 
 ### Intro
