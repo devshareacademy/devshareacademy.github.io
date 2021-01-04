@@ -313,3 +313,4 @@ Now that we have tested our class, that brings this tutorial to an end. We manag
 You can find the complete code for this tutorial here: <a href="https://github.com/scottwestover/typescript-basic-memory-game" target="_blank">GitHub - TypeScript Basic Memory Game</a>.
 
 I hope you enjoyed this post. Please feel free to post any questions or comments below.
+
