@@ -30,7 +30,7 @@ theme = "cactus"
   link = "https://www.linkedin.com/in/scott-westover-77393a97/"
 
 [params.comments]
-  enabled = false
+  enabled = true
 
 # Main menu which appears below site header.
 [[menu.main]]
